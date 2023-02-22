@@ -1,0 +1,34 @@
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+
+
+            String str="";
+            int max=0;
+
+            if(s.length()==0){
+                return 0;
+
+            }
+            else if(s.length()==1){
+                return 1;
+            }
+
+            for(char c: s.toCharArray()){
+
+                String current=String.valueOf(c);
+
+
+                if(str.contains(current)){
+                    str=str.substring(str.indexOf(current)+1);
+                }
+
+                str=str+String.valueOf(current);
+                max=Math.max(str.length(),max);
+            }
+
+
+            return max;
+
+
+    }
+}
