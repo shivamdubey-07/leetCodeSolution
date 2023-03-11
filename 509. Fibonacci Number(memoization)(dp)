@@ -1,0 +1,33 @@
+class Solution {
+
+    public static int fdp(int f[],int n){
+        if(n<0){
+            return 1;
+        }
+        if(n==0){
+            return 0;
+        }
+
+        if(f[n]!=-1){
+            return f[n];
+        }
+
+        f[n]=fdp(f,n-1)+fdp(f,n-2);
+        return f[n];
+
+    }
+
+    public int fib(int n) {
+        int f[]=new int[n+1];
+        Arrays.fill(f,-1);
+        return fdp(f,n);
+
+
+    
+
+
+
+
+        
+    }
+}
