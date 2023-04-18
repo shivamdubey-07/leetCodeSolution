@@ -1,0 +1,112 @@
+import java.math.BigInteger;
+class Solution {
+    public int myAtoi(String s) {
+  
+         int p1=0;
+        int sign=0;
+        int check=0;
+        int check2=0;
+       
+      
+        List<Character> c=new ArrayList<>();
+
+        for(int i=0;i<s.length();i++){
+            //step1
+
+            if(s.charAt(i)==' '){
+                if(check2==1){
+                    break;
+                    
+                }
+                p1++;
+
+            }
+
+            else if(s.charAt(i)==43){
+                  if(check==1){
+                    break;
+                }
+                if(check2==0){
+                      sign=1;
+                p1++;
+                check=1;
+                check2=1;
+                    
+                }
+                else{
+                    break;
+                }
+                
+            }
+            else if(s.charAt(i)==45){
+                   if(check==1){
+                    break;
+                }
+                 if(check2==0){
+                sign=-1;
+                p1++;
+                check=1;
+                check2=1;
+                 }
+                 else{
+                     break;
+                 }
+            }
+
+            else if(!(s.charAt(i)>=48 && s.charAt(i)<=57)){
+              
+                   break;
+               
+               
+            }
+            else{
+                
+                c.add(s.charAt(p1));
+                p1++;
+                check2=1;
+                
+
+            }
+            
+            
+            
+            
+        }
+        BigInteger res=new BigInteger("0");
+          
+          
+          for (int i = 0; i < c.size(); i++){
+              
+            BigInteger a = BigInteger.valueOf(Character.getNumericValue(c.get(i)));
+            
+          res=res.multiply(BigInteger.valueOf(10)).add(a);
+            
+            
+          }
+
+
+
+           
+          if(sign==-1){
+              res = res.negate();
+                if(res.compareTo(BigInteger.valueOf(Integer.MIN_VALUE))<0){
+                    return Integer.MIN_VALUE;
+
+                }
+
+
+               return res.intValue();
+
+          }
+
+
+          if(res.compareTo((BigInteger.valueOf(Integer.MAX_VALUE)))>0){
+              return Integer.MAX_VALUE;
+          }
+        return res.intValue();
+            
+          
+
+        
+    }
+}
