@@ -1,0 +1,40 @@
+
+import java.util.*;  
+class Solution {
+    public boolean canConstruct(String r, String m) {
+
+    HashMap<Character,Integer> hm1=new HashMap<>();
+    HashMap<Character,Integer> hm2=new HashMap<>();
+
+
+      for(int i=0;i<m.length();i++){
+          if(hm1.containsKey(m.charAt(i))){
+
+              hm1.put(m.charAt(i),hm1.get(m.charAt(i))+1);
+          }
+          else{
+              hm1.put(m.charAt(i),1);
+          }
+      }
+
+
+
+
+
+
+
+      for(int i=0;i<r.length();i++){
+          if(hm1.containsKey(r.charAt(i)) && hm1.get(r.charAt(i))>0){
+              hm1.put(r.charAt(i),hm1.get(r.charAt(i))-1);
+          }
+          else return false;
+      }
+
+return true;
+
+
+
+
+        
+    }
+}
